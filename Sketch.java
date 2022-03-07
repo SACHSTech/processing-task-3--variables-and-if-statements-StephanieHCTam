@@ -28,6 +28,7 @@ public class Sketch extends PApplet {
    */
   public void draw() {
 
+  /**
     int randX = 100; // 100 for original
     int randY = 50; // 50 for original
 
@@ -44,15 +45,30 @@ public class Sketch extends PApplet {
     else {
       background(255, 201, 251); // Pink
     }
+    */
 
     // Bird
-    float circleX = 180;
-    float circleY = 200;
+    float circleX = random(0, width);
+    float circleY = random(0, height);
     float circleDiameter = 200;
+    float circleDistance = circleDiameter / 10;
 
+    // Body
+    fill(242, 22, 84);
     ellipse(circleX, circleY, circleDiameter, circleDiameter);
-
   
+    // Beak
+    fill(255, 233, 38);
+    triangle((float)(circleX/1.17), (float)(circleY/1.1), circleX, (float)(circleY/0.87), (float)(circleX/0.87), (float)(circleY/1.1));
+
+    // Left Eye
+    fill(24, 0, 102);
+    ellipse(circleX - circleDistance, circleY - circleDistance, circleDiameter/10, circleDiameter/6);
+
+    // Right Eye
+    fill(24, 0, 102);
+    ellipse(circleX + circleDistance, circleY - circleDistance, circleDiameter/10, circleDiameter/6);
+    
 
   }
   
