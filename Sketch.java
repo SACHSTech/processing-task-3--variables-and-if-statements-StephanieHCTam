@@ -3,7 +3,7 @@ import processing.core.PApplet;
 public class Sketch extends PApplet {
 	
   /**
-  * Program Sketch.java draw objects in random locations. 
+  * Program Sketch.java creates a sketch of a bird at random locations with background color based on the location. Current time is shown.
   * @author: Stephanie Tam
   */
 	
@@ -26,13 +26,14 @@ public class Sketch extends PApplet {
   public void setup() {
     background(173, 230, 255);
 
+    // Change background color 
     if (circleX <= 200 && circleY >= 200){
-      background(58, 50, 168); // blue
+      background(58, 50, 168); // Blue
     }
     else if (circleX >= 200 && circleY <= 200){
       background(255, 255, 181); // Yellow
     }
-    else if(circleX <= 200 && circleY >=200){
+    else if (circleX <= 200 || circleY <=200){
       background(200, 255, 170); // Green
     }
     else if (circleX >= 200 && circleY >= 200){
@@ -82,8 +83,5 @@ public class Sketch extends PApplet {
       textSize(30); 
       text(time,(width/2), (height/2));
     }
-
   }
-  
-  // define other methods down here.
 }
