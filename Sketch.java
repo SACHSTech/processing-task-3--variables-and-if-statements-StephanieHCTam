@@ -7,6 +7,10 @@ public class Sketch extends PApplet {
   * @author: Stephanie Tam
   */
 	
+  // Bird
+  float circleX = random(0, width);
+  float circleY = random(0, height);
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -28,28 +32,7 @@ public class Sketch extends PApplet {
    */
   public void draw() {
 
-  /**
-    int randX = 100; // 100 for original
-    int randY = 50; // 50 for original
-
-    // Sky colour
-    if (randY == 50) { // On ground
-      background(58, 50, 168); // Blue
-    }
-    else if (randY < 50 && randY > -250) { // In sky
-      background(255, 255, 181); // Yellow
-    }
-    else if (randY > 50 && randY < 400) { // Under ground
-      background(200, 255, 170); // Green
-    }
-    else {
-      background(255, 201, 251); // Pink
-    }
-    */
-
     // Bird
-    float circleX = random(0, width);
-    float circleY = random(0, height);
     float circleDiameter = 200;
     float circleDistance = circleDiameter / 10;
 
@@ -69,6 +52,19 @@ public class Sketch extends PApplet {
     fill(24, 0, 102);
     ellipse(circleX + circleDistance, circleY - circleDistance, circleDiameter/10, circleDiameter/6);
     
+    // Values for time
+    int intHours = hour();
+    int intMinutes = minute();
+    int intSeconds = second();
+
+    // Print time
+    String strTime = (str(intHours % 12) + ":" + str(intMinutes) + ":" + str(intSeconds));
+
+    // Size and font
+    noStroke();
+    fill(0, 0, 200);
+    textSize(40);
+    text(strTime, 150, 380);
 
   }
   
