@@ -8,8 +8,8 @@ public class Sketch extends PApplet {
   */
 	
   // Bird
-  float circleX = random(0, width);
-  float circleY = random(0, height);
+  float circleX = random(0, 400);
+  float circleY = random(0, 400);
 
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -25,6 +25,19 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(173, 230, 255);
+
+    if (circleX <= 200 && circleY >= 200){
+      background(58, 50, 168); // blue
+    }
+    else if (circleX >= 200 && circleY <= 200){
+      background(255, 255, 181); // Yellow
+    }
+    else if(circleX <= 200 && circleY >=200){
+      background(200, 255, 170); // Green
+    }
+    else if (circleX >= 200 && circleY >= 200){
+      background(255, 201, 251); // Pink
+    }
   }
 
   /**
@@ -42,7 +55,7 @@ public class Sketch extends PApplet {
   
     // Beak
     fill(255, 233, 38);
-    triangle((float)(circleX/1.17), (float)(circleY/1.1), circleX, (float)(circleY/0.87), (float)(circleX/0.87), (float)(circleY/1.1));
+    triangle((float)(circleX - 30), (float)(circleY - 20), circleX, (float)(circleY + 30), (float)(circleX + 30), (float)(circleY - 20));
 
     // Left Eye
     fill(24, 0, 102);
@@ -52,19 +65,23 @@ public class Sketch extends PApplet {
     fill(24, 0, 102);
     ellipse(circleX + circleDistance, circleY - circleDistance, circleDiameter/10, circleDiameter/6);
     
-    // Values for time
-    int intHours = hour();
-    int intMinutes = minute();
-    int intSeconds = second();
+    // Current time
+    String time = hour() + ":" + minute();
 
-    // Print time
-    String strTime = (str(intHours % 12) + ":" + str(intMinutes) + ":" + str(intSeconds));
-
-    // Size and font
-    noStroke();
-    fill(0, 0, 200);
-    textSize(40);
-    text(strTime, 150, 380);
+    if (hour() > 12){
+      time = hour()- 12 + ":" + minute() + " PM";
+      textSize(30); 
+      text(time,(width/2), (height/2));
+    }
+    else if(hour() == 0){
+      time = "12:" + minute() + " AM";
+      textSize(30); 
+      text(time,(width/2), (height/2));
+    }
+    else{
+      textSize(30); 
+      text(time,(width/2), (height/2));
+    }
 
   }
   
